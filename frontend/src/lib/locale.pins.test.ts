@@ -97,7 +97,9 @@ describe("interface chrome uses logical properties", () => {
   it("has no physical spacing or alignment utilities left", () => {
     const offenders: string[] = [];
     for (const file of tsxFiles(SRC)) {
-      const rel = relative(SRC, file);
+      // Forward slashes on every platform: the exemption set is written that
+      // way, and `relative` returns backslashes on Windows.
+      const rel = relative(SRC, file).split("\\").join("/");
       if (PHYSICAL_BY_DESIGN.has(rel)) continue;
       for (const str of classStrings(readFileSync(file, "utf8"))) {
         for (const [rx, fix] of BANNED) {

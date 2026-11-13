@@ -15,8 +15,9 @@
 
 import { readFileSync, readdirSync, existsSync } from "node:fs";
 import { join, resolve } from "node:path";
+import { fileURLToPath } from "node:url";
 
-const ROOT = resolve(new URL("..", import.meta.url).pathname);
+const ROOT = resolve(fileURLToPath(new URL("..", import.meta.url)));
 const BASE = join(ROOT, "frontend", "src", "locales", "en.json");
 const DIR = join(ROOT, "frontend", "public", "locales");
 

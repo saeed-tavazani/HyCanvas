@@ -996,8 +996,8 @@ export function EditorApp() {
           className="min-w-0 max-w-[8rem] flex-shrink rounded-lg px-2 py-1 text-sm font-semibold text-neutral-800 outline-none hover:bg-neutral-100 focus:bg-neutral-100 sm:max-w-[12rem] lg:max-w-[14rem]"
         />
         <div className={`flex shrink-0 items-center ${isPhone ? "" : "ms-2"}`}>
-          <IconButton aria-label={tr("editor.undo")} onClick={undo}><Undo2 size={18} /></IconButton>
-          <IconButton aria-label={tr("editor.redo")} onClick={redo}><Redo2 size={18} /></IconButton>
+          <IconButton aria-label={tr("editor.undo")} onClick={undo}><Undo2 size={18} className={mirrorInRtl} /></IconButton>
+          <IconButton aria-label={tr("editor.redo")} onClick={redo}><Redo2 size={18} className={mirrorInRtl} /></IconButton>
         </div>
         {/* Rulers/grid/snap fit inline down to sm; below that they fold into the
             overflow menu (they have no other entry point, so they must stay

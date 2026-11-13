@@ -6738,7 +6738,7 @@ export function AppsPanel() {
     const Icon = APP_ICONS[open.id] ?? Shapes;
     return (
       <PanelShell title={tr("editor.apps")}>
-        <button onClick={() => setOpen(null)} className="mb-3 flex items-center gap-1 text-xs font-medium text-brand-ink hover:underline"><ChevronLeft size={13} />{tr("editor.all_apps")}</button>
+        <button onClick={() => setOpen(null)} className="mb-3 flex items-center gap-1 text-xs font-medium text-brand-ink hover:underline"><ChevronLeft size={13} className={mirrorInRtl} />{tr("editor.all_apps")}</button>
         <div className="mb-3 flex items-center gap-2">
           <span className="grid h-9 w-9 place-items-center rounded-lg bg-brand-50 text-brand-ink"><Icon size={18} /></span>
           <div>

@@ -11,6 +11,7 @@ import { Copy, Link2, RotateCw, Trash2, Ban, Check, Code, Eye, EyeOff, Lock, Cro
 import { ApiError } from "@hc/sdk";
 import type { AccessMode, AccessRequestView, DesignSharingView, ShareGrant, ShareLinkView } from "@hc/sdk";
 import { copyText } from "@/lib/clipboard";
+import { mirrorInRtl } from "@/lib/locale";
 import { oc } from "@/lib/sdk";
 import { useEditor } from "@/store/editor";
 import { Modal } from "@/components/ui/Modal";
@@ -582,7 +583,7 @@ export function ShareDialog({ open, onClose, designId, focusRequests }: { open: 
                 className="mt-2.5 flex items-center gap-1 text-xs font-medium text-neutral-500 transition-colors hover:text-neutral-700"
                 aria-expanded={linkOptionsOpen}
               >
-                <ChevronRight size={13} className={`transition-transform ${linkOptionsOpen ? "rotate-90" : ""}`} />
+                <ChevronRight size={13} className={`transition-transform ${linkOptionsOpen ? "rotate-90" : ""} ${mirrorInRtl}`} />
                 Link options
                 {(linkPassword || linkExpiry || linkRequireSignin) && (
                   <span className="rounded-full bg-brand-100 px-1.5 py-0.5 text-[10px] font-semibold uppercase tracking-wide text-brand-ink">{tr("editor.set")}</span>

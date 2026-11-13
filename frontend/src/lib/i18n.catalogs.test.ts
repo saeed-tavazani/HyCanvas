@@ -10,7 +10,7 @@ import { baseCatalog, registerCatalog, loadCatalog, translate, resetI18n } from 
 const DIR = join(fileURLToPath(new URL(".", import.meta.url)), "..", "..", "public", "locales");
 const load = (tag: string) => JSON.parse(readFileSync(join(DIR, `${tag}.json`), "utf8")) as Record<string, string>;
 
-const FULL = ["es", "fr", "de", "pt-br", "ja", "zh-cn", "hi"];
+const FULL = ["es", "fr", "de", "pt-br", "ja", "zh-cn", "hi", "fa"];
 
 describe.each(FULL)("catalog %s", (tag) => {
   const cat = load(tag);

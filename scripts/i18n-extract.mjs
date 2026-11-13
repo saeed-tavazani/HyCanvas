@@ -20,8 +20,11 @@
 
 import { readFileSync, writeFileSync, readdirSync, statSync } from "node:fs";
 import { join, relative, resolve } from "node:path";
+import { fileURLToPath } from "node:url";
 
-const ROOT = resolve(new URL("..", import.meta.url).pathname);
+// fileURLToPath, not `.pathname`: on Windows the latter yields "/C:/...",
+// which resolve() then turns into "C:\C:\...".
+const ROOT = resolve(fileURLToPath(new URL("..", import.meta.url)));
 const SRC = join(ROOT, "frontend", "src");
 const CATALOG = join(SRC, "locales", "en.json");
 

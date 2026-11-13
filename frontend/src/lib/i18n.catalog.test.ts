@@ -128,6 +128,9 @@ describe("schema values are never translated", () => {
 });
 
 describe("no hard-coded user-visible strings", () => {
+  // The extractor spawns a subprocess that walks the whole source tree, which
+  // takes several seconds on Windows. The default 5s budget is a machine-speed
+  // limit, not a correctness one: the assertion below still has to find zero.
   it("leaves nothing for the extractor to find", () => {
     // The extractor is the single definition of what counts as a translatable
     // string. Running it in dry mode here means the rule cannot drift between
@@ -170,7 +173,7 @@ describe("no hard-coded user-visible strings", () => {
       found = count(out);
     }
     expect(found, `${found} hard-coded strings:\n${out}`).toBe(0);
-  });
+  }, 30_000);
 
   it("never calls tr() at module scope, where it would freeze at import", () => {
     // A module-level `tr()` is evaluated once, before any catalog has loaded,

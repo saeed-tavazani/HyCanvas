@@ -26,6 +26,7 @@ const docLanguages = (): { value: string; label: string }[] => [
   { value: "de-DE", label: "Deutsch" },
   { value: "pt-BR", label: "Português (Brasil)" },
   { value: "hi-IN", label: "हिन्दी" },
+  { value: "fa-IR", label: "فارسی" },
   { value: "ja-JP", label: "日本語" },
   { value: "zh-CN", label: "中文 (简体)" },
   { value: "ar-SA", label: "العربية" },

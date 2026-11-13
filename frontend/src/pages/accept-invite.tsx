@@ -12,6 +12,7 @@ import Link from "next/link";
 import { CheckCircle2, AlertCircle, Loader2, LogIn, Clock, Sparkles, MailOpen, ArrowRight } from "lucide-react";
 import type { WorkspaceInvitation, WorkspaceRole } from "@hc/sdk";
 import { oc } from "@/lib/sdk";
+import { mirrorInRtl } from "@/lib/locale";
 import { useAuth } from "@/store/auth";
 import { useToast } from "@/components/ui/Toast";
 import { Logo } from "@/components/ui/Logo";
@@ -250,7 +251,7 @@ export default function AcceptInvitePage() {
             </div>
             <Link href="/dashboard">
               <Button variant="secondary">
-                {tr("page.go_to_dashboard")} <ArrowRight size={16} />
+                {tr("page.go_to_dashboard")} <ArrowRight size={16} className={mirrorInRtl} />
               </Button>
             </Link>
           </div>

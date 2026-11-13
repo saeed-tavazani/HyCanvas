@@ -6,6 +6,7 @@
 import { useCallback, useEffect, useRef, useState, type FormEvent } from "react";
 import { useRouter } from "next/router";
 import dynamic from "next/dynamic";
+import { mirrorInRtl } from "@/lib/locale";
 import {
   Home as HomeIcon,
   LayoutTemplate,
@@ -840,7 +841,7 @@ export function DashboardApp({ view }: { view: DashboardView }) {
               aria-label={tr("dashboard.expand_sidebar")}
               className="mb-4 flex justify-center rounded-xl py-2 text-neutral-500 hover:bg-neutral-100 hover:text-neutral-700"
             >
-              <PanelLeftOpen size={18} />
+              <PanelLeftOpen size={18} className={mirrorInRtl} />
             </button>
             {/* Collapsed workspace chip: expanding is the way to switch. */}
             <button
@@ -864,7 +865,7 @@ export function DashboardApp({ view }: { view: DashboardView }) {
                 aria-label={isNarrow ? tr("ui.close") : tr("dashboard.collapse_sidebar")}
                 className="rounded-lg p-1.5 text-neutral-400 hover:bg-neutral-100 hover:text-neutral-600"
               >
-                {isNarrow ? <X size={18} /> : <PanelLeftClose size={18} />}
+                {isNarrow ? <X size={18} /> : <PanelLeftClose size={18} className={mirrorInRtl} />}
               </button>
             </div>
 

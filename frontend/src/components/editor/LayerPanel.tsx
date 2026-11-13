@@ -10,6 +10,7 @@
 
 import { useState } from "react";
 import { Eye, EyeOff, Lock, Unlock, GripVertical, Copy, Trash2, ArrowUp, ArrowDown, ChevronRight, ChevronDown } from "lucide-react";
+import { mirrorInRtl } from "@/lib/locale";
 import type { Node } from "@hc/schema";
 import { useEditor } from "@/store/editor";
 import { layerDropIndex } from "@/lib/layerOrder";
@@ -183,7 +184,7 @@ export function LayerPanel() {
                   onClick={() => toggleExpanded(node.id)}
                   className="grid shrink-0 place-items-center text-neutral-400 hover:text-neutral-700 pointer-coarse:h-10 pointer-coarse:w-8"
                 >
-                  {isOpen ? <ChevronDown size={14} /> : <ChevronRight size={14} />}
+                  {isOpen ? <ChevronDown size={14} /> : <ChevronRight size={14} className={mirrorInRtl} />}
                 </button>
               ) : (
                 <span className="w-3.5 shrink-0" />

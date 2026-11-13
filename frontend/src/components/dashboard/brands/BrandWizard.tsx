@@ -9,6 +9,7 @@
 
 import { useState } from "react";
 import { ArrowLeft, ArrowRight, Check, Globe, ImageIcon, Loader2, PenLine, X } from "lucide-react";
+import { mirrorInRtl } from "@/lib/locale";
 import type { BrandKit } from "@hc/sdk";
 import {
   colorsFromHexes, draftIsSavable, draftToPatch, emptyDraft, logoPalette, withNeutrals, type BrandDraft,
@@ -322,7 +323,7 @@ export function BrandWizard({
               onClick={() => setStep(idx <= 0 ? "start" : steps[idx - 1])}
               className="inline-flex items-center gap-1.5 rounded-lg border border-neutral-200 px-3 py-2 text-sm font-medium text-neutral-700 hover:bg-neutral-50"
             >
-              <ArrowLeft size={15} /> {tr("brands.back")}
+              <ArrowLeft size={15} className={mirrorInRtl} /> {tr("brands.back")}
             </button>
             {step === "review" ? (
               <button
@@ -342,7 +343,7 @@ export function BrandWizard({
                 className="inline-flex items-center gap-1.5 rounded-lg bg-brand-600 px-4 py-2 text-sm font-semibold text-white hover:bg-brand-700 disabled:opacity-60"
                 data-testid="brand-wizard-next"
               >
-                {tr("brands.next")} <ArrowRight size={15} />
+                {tr("brands.next")} <ArrowRight size={15} className={mirrorInRtl} />
               </button>
             )}
           </div>

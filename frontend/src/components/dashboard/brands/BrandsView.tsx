@@ -9,6 +9,7 @@
 
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { useRouter } from "next/router";
+import { mirrorInRtl } from "@/lib/locale";
 import {
   ArrowLeft, BookOpen, Copy, History, Loader2, Palette, Pencil, Plus, Printer, RotateCcw, Star, Trash2,
 } from "lucide-react";
@@ -281,7 +282,7 @@ function BrandDetail({
   return (
     <section data-testid="brand-detail">
       <button type="button" onClick={onBack} className="mb-3 inline-flex items-center gap-1 text-xs font-medium text-neutral-500 hover:text-neutral-800 print:hidden">
-        <ArrowLeft size={14} /> {tr("brands.all_brand_kits")}
+        <ArrowLeft size={14} className={mirrorInRtl} /> {tr("brands.all_brand_kits")}
       </button>
       <div className="mb-4 flex flex-wrap items-center justify-between gap-3">
         <div className="flex min-w-0 items-center gap-2">
