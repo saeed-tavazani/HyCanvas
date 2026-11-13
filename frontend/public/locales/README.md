@@ -1,10 +1,17 @@
 # UI translations
 
 Each file here is one locale's UI catalog, named by its BCP 47 tag in lower
-case: `fr.json`, `pt-br.json`, `ar.json`.
+case: `fa.json`, `pt-br.json`, `ar.json`.
+
+This build ships two UI languages: American English, which is the bundled base
+and has no file here, and Persian (`fa.json`). The language picker in Settings
+offers exactly those two, and `i18n.catalogs.test.ts` fails if the files here
+and the picker list ever disagree.
 
 Adding a language needs no rebuild and no code change. Drop a JSON file in this
-directory and the app picks it up for users on that locale.
+directory and the app picks it up for users on that locale. To make it
+selectable in Settings as well, add it to the `locales()` list in
+`frontend/src/components/settings/SettingsApp.tsx`.
 
 On a self-hosted install the production build is a single binary with the
 frontend baked in, so instead put the file in a `locales` directory beside the

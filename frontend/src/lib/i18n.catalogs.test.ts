@@ -2,7 +2,7 @@
 // Not a translation review: proves each file parses, resolves through the
 // lookup chain, keeps placeholders intact, and covers the whole base catalog.
 import { describe, expect, it, beforeEach } from "vitest";
-import { readFileSync } from "node:fs";
+import { readFileSync, readdirSync } from "node:fs";
 import { join } from "node:path";
 import { fileURLToPath } from "node:url";
 import { baseCatalog, registerCatalog, loadCatalog, translate, resetI18n } from "./i18n";
@@ -10,7 +10,9 @@ import { baseCatalog, registerCatalog, loadCatalog, translate, resetI18n } from 
 const DIR = join(fileURLToPath(new URL(".", import.meta.url)), "..", "..", "public", "locales");
 const load = (tag: string) => JSON.parse(readFileSync(join(DIR, `${tag}.json`), "utf8")) as Record<string, string>;
 
-const FULL = ["es", "fr", "de", "pt-br", "ja", "zh-cn", "hi", "fa"];
+// The shipped catalogs. English (US) is the bundled base and has no file of
+// its own, so Persian is the only one here.
+const FULL = ["fa"];
 
 describe.each(FULL)("catalog %s", (tag) => {
   const cat = load(tag);
@@ -46,13 +48,15 @@ describe.each(FULL)("catalog %s", (tag) => {
   });
 });
 
-describe("catalog en-gb", () => {
-  it("carries only spellings that differ from the base", () => {
-    const gb = load("en-gb");
-    // Every entry must genuinely differ, or it is dead weight the per-key
-    // fallback would have handled.
-    const same = Object.keys(gb).filter((k) => k in baseCatalog && gb[k] === baseCatalog[k]);
-    expect(same).toEqual([]);
-    expect(gb["dashboard.favorites"]).toBe("Favourites");
+describe("shipped locales", () => {
+  it("ships exactly the catalogs the language pickers offer", () => {
+    // A catalog with no way to select it is dead weight, and an offered
+    // language with no catalog silently falls back to English. Keeping the
+    // two lists equal is the only thing that stops them drifting apart.
+    const shipped = readdirSync(DIR)
+      .filter((f) => f.endsWith(".json"))
+      .map((f) => f.replace(/\.json$/, ""))
+      .sort();
+    expect(shipped).toEqual(["fa"]);
   });
 });

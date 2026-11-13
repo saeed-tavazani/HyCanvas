@@ -20,15 +20,7 @@ import { tr, trOr } from "@/lib/i18n";
 // shapes. i18n-ignore: a language picker shows each language in its OWN name.
 const docLanguages = (): { value: string; label: string }[] => [
   { value: "en-US", label: "English (US)" },
-  { value: "en-GB", label: "English (UK)" },
-  { value: "es-ES", label: "Español" },
-  { value: "fr-FR", label: "Français" },
-  { value: "de-DE", label: "Deutsch" },
-  { value: "pt-BR", label: "Português (Brasil)" },
-  { value: "hi-IN", label: "हिन्दी" },
   { value: "fa-IR", label: "فارسی" },
-  { value: "ja-JP", label: "日本語" },
-  { value: "zh-CN", label: "中文 (简体)" },
   { value: "ar-SA", label: "العربية" },
   { value: "he-IL", label: "עברית" },
 ];

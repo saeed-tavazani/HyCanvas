@@ -39,20 +39,12 @@ const tabs = (): { id: Tab; label: string; icon: typeof UserIcon }[] => [
   { id: "ai", label: tr("settings.ai_provider"), icon: Sparkles },
 ];
 
-// A small, friendly set of UI languages. The user's current locale is added if
-// it is not already listed, so the select always reflects their value.
+// The UI languages this build ships. The user's current locale is added if it
+// is not already listed, so the select always reflects their value.
 // i18n-ignore: a language picker shows each language in its OWN name.
 const locales = (): { value: string; label: string }[] => [
   { value: "en-US", label: "English (US)" },
-  { value: "en-GB", label: "English (UK)" },
-  { value: "es-ES", label: "Español" },
-  { value: "fr-FR", label: "Français" },
-  { value: "de-DE", label: "Deutsch" },
-  { value: "pt-BR", label: "Português (Brasil)" },
-  { value: "hi-IN", label: "हिन्दी" },
   { value: "fa-IR", label: "فارسی" },
-  { value: "ja-JP", label: "日本語" },
-  { value: "zh-CN", label: "中文 (简体)" },
 ];
 
 // Clock and week-start preferences. "auto" defers to the chosen language.
